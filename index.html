@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Neighborhood Map App</title>
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="asset/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
+    
+    <script src="asset/js/knockout-3.4.2.js" > </script>
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+    </script>
+
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+	<div class="main-container">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+            	 <nav class="col-2 collapse bg-inverse pt-2 h-100 sidebar" id="sidebar">
+                    <h3 class="title">Neighborhood Map App</h3>
+                   	<!-- Search Input -->
+                    <div class="input-group">
+                        <input class="search_input form-control" placeholder=" Type location to filter" data-bind="textInput: suggestPlaces, 
+                        valueUpdate: 'afterkeydown'" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1">Filter</span>
+                    </div>
+                    <ul class="nav flex-column" data-bind="foreach: locations">
+                        <li data-bind="text: title, click: $parent.populateMarker" class="nav-item text-white location_list"></li>
+                    </ul>
+                </nav>
+                <main class="col p-0 navbar-light">
+                    <a href class=" m-2 float-left" data-toggle="collapse" data-target="#sidebar" >
+                        <span class="navbar-toggler-icon"></span>
+                    </a>
+                    <div id="map">
+                        <p class="error_message"></p>
+                    </div>
+                    <div class="footer">
+                    <img src="asset/css/img/Powered-by-Foursquare-full-color-600.fw.png" 
+                    alt="Powered by Foursquare"/></div>
+                </main>
+               
+            </div>
+        </div>
+	</div>
+
+    <script src="asset/js/script.js"> </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3&keyAIzaSyCKXwljFEEf_oYCvy5_zFkFW3yRDSdymcw&callback=launch"
+        onerror="googleError()">
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+body {
+	font-family: 'Ubuntu', sans-serif;
+	}
+.sidebar {
+    min-width: 300px;
+}
+li {
+	cursor:pointer;
+	}
+.location_list {
+    padding: 3px 5px 5px 5px;
+}
+
+.title {
+    padding: 15px 5px 10px 5px;
+	color:#fff;
+	font-weight:400;
+}
+
+.no-padding {
+    padding: 0 0 0 0;
+}
+
+.padding-sides-10 {
+    padding: 0 10px 0 10px;
+}
+
+.search_input {
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.fs_title {
+    font-size: 1.3em;
+}
+
+.fs_stitle {
+    font-size: 1em;
+}
+
+.fs_atitle {
+    margin-bottom: 2px;
+    font-size: .95em;
+}
+
+.fs_address {
+    margin-bottom: 0;
+    font-size: .9em;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+	body {
+		font-family: 'Ubuntu', sans-serif;
+		}
+    .search_input{
+        font-size: 0.6em;
+        margin-top: 0.32em;
+    }
+}
+
+.error_message {
+    color: #EE9394;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
