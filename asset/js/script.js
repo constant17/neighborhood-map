@@ -1,157 +1,7 @@
- // Create a styles array to use with the map
-var styles = [
-          {
-            featureType: 'water',
-            stylers: [
-              { color: '#19a0d8' }
-            ]
-          },{
-            featureType: 'administrative',
-            elementType: 'labels.text.stroke',
-            stylers: [
-              { color: '#ffffff' },
-              { weight: 6 }
-            ]
-          },{
-            featureType: 'administrative',
-            elementType: 'labels.text.fill',
-            stylers: [
-              { color: '#e85113' }
-            ]
-          },{
-            featureType: 'road.highway',
-            elementType: 'geometry.stroke',
-            stylers: [
-              { color: '#efe9e4' },
-              { lightness: -40 }
-            ]
-          },{
-            featureType: 'transit.station',
-            stylers: [
-              { weight: 9 },
-              { hue: '#e85113' }
-            ]
-          },{
-            featureType: 'road.highway',
-            elementType: 'labels.icon',
-            stylers: [
-              { visibility: 'off' }
-            ]
-          },{
-            featureType: 'water',
-            elementType: 'labels.text.stroke',
-            stylers: [
-              { lightness: 100 }
-            ]
-          },{
-            featureType: 'water',
-            elementType: 'labels.text.fill',
-            stylers: [
-              { lightness: -100 }
-            ]
-          },{
-            featureType: 'poi',
-            elementType: 'geometry',
-            stylers: [
-              { visibility: 'on' },
-              { color: '#f0e4d3' }
-            ]
-          },{
-            featureType: 'road.highway',
-            elementType: 'geometry.fill',
-            stylers: [
-              { color: '#efe9e4' },
-              { lightness: -25 }
-            ]
-          }
-        ];
 
-// These are the locations listings that will be shown to the user.
-var neigborhood_locations = [
-    {
-        title: 'Bentley Road South East',
-        position: { lat: 33.9177763, lng:  -84.47558609999999 },
-        type: 'Ghetto neighborhood'
-    },
-    {
-        title: 'Cosmopolitan Live',
-        position: { lat: 33.9231882, lng: -84.47979409999999 },
-        type: 'Bar & Restaurant'
-    },
-    {
-        title: 'Reliable',
-        position:{ lat: 33.923889, lng: -84.47273469999999 },
-        type:  'Limousine service and Transit'
-    },
-	{
-        title: 'Minks Package',
-        position:{ lat: 33.9226044, lng:-84.4770456 },
-        type:  'Liquor store'
-    },
-    {
-        title: 'Rainbow Shops',
-        position: { lat: 33.9229048, lng: -84.46666499999998 },
-        type:  'Shopping'
-    },
-    {
-        title: 'Bowlero Marietta',
-        position:{ lat: 33.92401280000001, lng: -84.4739472 },
-        type: 'Entertainment'
-    },
-    {
-        title: 'Stratford Ridge',
-        position: { lat: 33.9217291, lng: -84.47867559999997 },
-        type: 'Appartment Building'
-    },
-    {
-        title: 'Church of Christ',
-        position: { lat: 33.9314198, lng: -84.47572600000001 },
-        type: 'Church'
-    },
-    {
-        title: 'Dollar General',
-        position: { lat: 33.928505, lng: -84.493155 },
-        type: 'Home Goods Store'
-    },
-    {
-        title: 'Rio and Lounge',
-        position: { lat: 33.9393016, lng: -84.50614769999999 },
-        type: 'Club'
-    },
-    {
-        title: 'Pappasito\'s Cantina',
-        position: { lat: 33.90198880000001, lng: -84.47106329999997 },
-        type: 'Restaurant'
-    },
-    {
-        title: 'Kroger',
-        position: {lat: 33.9230133, lng: -84.46993789999999 },
-        type: 'Grocery Store'
-    },
-	{
-        title: 'Kennesaw State University',
-        position: {lat: 33.9390885, lng: -84.51916260000002 },
-        type: 'School'
-    },
-	{
-        title: 'Covered Bridge Condonium',
-        position: {lat: 33.9295541, lng: -84.48087220000002 },
-        type: 'Complex'
-    },
-	{
-        title: 'Cracker Barrel Old Country Store',
-        position: {lat: 33.9218911, lng: -84.49152989999999 },
-        type: 'Restaurant'
-    },
-	{
-        title: 'Dave & Buster\'s',
-        position: {lat: 33.919681, lng: -84.4852 },
-        type: 'Sport Bar'
-    }
-]
 // Global Variables
 var map, clientID, clientSecret;
-
+ 
 function myView() {
     var self = this;
     this.markers = [];
@@ -173,7 +23,7 @@ function myView() {
                 var response = marker.response.venues[0];
                 self.street = response.location.formattedAddress[0];
                 self.city = response.location.formattedAddress[1];
-                self.country = response.location.formattedAddress[4];
+                self.country = response.location.formattedAddress[4] || " Country name not provided";
                 self.category = response.categories[0].shortName;
 				self.htmlContentFoursquare =
                     '<i><h5 class="fs_stitle">' + self.category +
@@ -266,7 +116,7 @@ $(document).ready(function() {
     screenHeight = $(window).innerHeight();
     $('#map').css('min-height', screenHeight);
     $('#sidebar').css('min-height', screenHeight);
-  };
+  }
   setWindowSize();
 
   $(window).resize(function() {
